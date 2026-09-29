@@ -10,26 +10,17 @@ module.exports = {
       colors: {
         brand: {
           blue: {
-            DEFAULT: '#2563EB',
-            dark: '#1D4ED8',
-            deep: '#0F172A',
-            hero: '#1E3A8A',
+            DEFAULT: '#0B5CFF',
+            dark: '#0848CC',
+            deep: '#0B132B',
+            hero: '#0B52E8',
           },
           lime: {
-            DEFAULT: '#A3E635',
-            bright: '#CCFF00',
-            dark: '#65A30D',
+            DEFAULT: '#C4F800',
+            bright: '#D2FF00',
+            dark: '#A6DB00',
           },
-          yellow: {
-            DEFAULT: '#FACC15',
-          },
-          slate: {
-            50: '#F8FAFC',
-            100: '#F1F5F9',
-            200: '#E2E8F0',
-            600: '#475569',
-            900: '#0F172A',
-          },
+          dark: '#0F172A',
         },
       },
       fontFamily: {
