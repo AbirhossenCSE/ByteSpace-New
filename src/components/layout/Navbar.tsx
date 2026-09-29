@@ -2,65 +2,66 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Menu, X, Search, ShoppingBag, BookOpen } from 'lucide-react';
+import { Menu, X, ShoppingBag } from 'lucide-react';
 import Container from './Container';
 
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="w-full bg-[#0B52E8] border-b border-white/10 text-white">
+    <header className="w-full bg-[#0050FF] bg-hero-grid border-b border-white/10 text-white relative z-50">
       <Container className="flex h-20 items-center justify-between">
         {/* Brand Logo */}
-        <Link href="/" className="flex items-center gap-2.5 font-bold text-white text-xl">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/15 border border-white/20 text-white">
-            <BookOpen className="h-5 w-5" />
+        <Link href="/" className="flex items-center gap-2.5 font-bold text-white text-2xl">
+          {/* Custom Stylized Lime 'b' Logo Mark */}
+          <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#C6FF00] text-[#0050FF] font-black text-xl leading-none shadow-sm">
+            b
           </div>
-          <span className="font-extrabold tracking-tight text-2xl">ByteSpace</span>
+          <span className="font-extrabold tracking-tight text-2xl text-white">ByteSpace</span>
         </Link>
 
         {/* Desktop Nav Links */}
         <nav className="hidden items-center gap-8 md:flex">
           <Link
             href="/"
-            className="text-sm font-medium text-white transition-opacity hover:opacity-80"
+            className="text-sm font-semibold text-white transition-opacity hover:opacity-80"
           >
             Home
           </Link>
           <Link
             href="#courses"
-            className="text-sm font-medium text-white/80 transition-opacity hover:text-white"
+            className="text-sm font-semibold text-white/80 transition-opacity hover:text-white"
           >
             Courses
           </Link>
           <Link
             href="#creators"
-            className="text-sm font-medium text-white/80 transition-opacity hover:text-white"
+            className="text-sm font-semibold text-white/80 transition-opacity hover:text-white"
           >
             Creators
           </Link>
         </nav>
 
         {/* Desktop Right Actions */}
-        <div className="hidden items-center gap-5 md:flex">
+        <div className="hidden items-center gap-6 md:flex">
           <Link
             href="/login"
-            className="text-sm font-medium text-white/90 transition-opacity hover:text-white"
+            className="text-sm font-semibold text-white/90 transition-opacity hover:text-white"
           >
             Sign In
           </Link>
           <Link
             href="/signup"
-            className="rounded-full border border-white/40 px-5 py-2 text-sm font-semibold text-white transition-all hover:bg-white hover:text-brand-blue"
+            className="rounded-full border border-white/50 px-5 py-2 text-sm font-bold text-white transition-all hover:bg-white hover:text-[#0050FF]"
           >
             Join Us
           </Link>
           <button
             type="button"
             aria-label="Shopping bag"
-            className="flex h-9 w-9 items-center justify-center rounded-full text-white/90 hover:bg-white/10 transition-colors"
+            className="flex h-9 w-9 items-center justify-center rounded-full text-white hover:bg-white/10 transition-colors"
           >
-            <ShoppingBag className="h-5 w-5" />
+            <ShoppingBag className="h-5 w-5 stroke-[2.2]" />
           </button>
         </div>
 
@@ -79,7 +80,7 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Drawer */}
       {isOpen && (
-        <div className="bg-[#0848CC] px-4 py-4 md:hidden border-t border-white/10">
+        <div className="bg-[#0042D9] px-4 py-4 md:hidden border-t border-white/10">
           <nav className="flex flex-col gap-3">
             <Link
               href="/"
@@ -109,7 +110,7 @@ export const Navbar: React.FC = () => {
               <Link
                 href="/signup"
                 onClick={() => setIsOpen(false)}
-                className="mt-1 rounded-full bg-brand-lime text-center py-2 text-sm font-bold text-slate-900"
+                className="mt-1 rounded-full bg-[#C6FF00] text-center py-2 text-sm font-bold text-slate-900"
               >
                 Join Us
               </Link>

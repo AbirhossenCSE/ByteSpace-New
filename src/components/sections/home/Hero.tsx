@@ -7,152 +7,156 @@ import { Search } from 'lucide-react';
 
 export const Hero: React.FC = () => {
   return (
-    <>
-      <section id="hero" className="relative overflow-hidden bg-[#0B52E8] bg-hero-grid pt-12 pb-20 lg:pt-16 lg:pb-28 text-white">
-        {/* Decorative 3D Floating Shapes */}
-        {/* Top-Left Lime Wavy Blob */}
-        <div className="absolute top-6 left-4 lg:left-12 pointer-events-none opacity-90 animate-pulse">
-          <svg width="120" height="80" viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M10 40 Q 30 10, 60 40 T 110 40" stroke="#C4F800" strokeWidth="24" strokeLinecap="round" />
-          </svg>
+    <section id="hero" className="relative overflow-hidden bg-[#0050FF] bg-hero-grid pt-12 pb-0 lg:pt-16 text-white min-h-[750px] flex flex-col justify-between">
+      {/* 3D Decorative Floating Shapes - Replicating exact screenshot shapes */}
+
+      {/* 1. Top-Left: Bright Lime 3D Spring Ribbon */}
+      <div className="absolute top-10 -left-6 sm:left-4 lg:left-10 pointer-events-none z-10">
+        <svg width="140" height="200" viewBox="0 0 140 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="drop-shadow-2xl">
+          <path
+            d="M20 30 Q 120 10, 70 80 T 30 140 T 100 180"
+            stroke="#C6FF00"
+            strokeWidth="32"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </div>
+
+      {/* 2. Middle-Left: White 3D Squiggly Spring */}
+      <div className="absolute top-1/2 left-8 lg:left-24 -translate-y-1/2 pointer-events-none z-10">
+        <svg width="90" height="90" viewBox="0 0 90 90" fill="none" className="drop-shadow-xl">
+          <path
+            d="M15 20 L40 45 L15 70 L65 45 L40 20"
+            stroke="#FFFFFF"
+            strokeWidth="16"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </div>
+
+      {/* 3. Bottom-Left: White 3D Torus Donut Ring */}
+      <div className="absolute bottom-16 left-6 lg:left-16 pointer-events-none z-10 transform -rotate-45">
+        <div className="h-28 w-44 sm:h-32 sm:w-48 rounded-[100%] border-[22px] border-white shadow-2xl bg-transparent" />
+      </div>
+
+      {/* 4. Top-Right: Bright Lime 3D Cylinder */}
+      <div className="absolute top-12 -right-8 sm:right-6 lg:right-14 pointer-events-none z-10 transform rotate-12">
+        <div className="h-44 w-24 sm:h-52 sm:w-28 rounded-[50px] bg-[#C6FF00] shadow-2xl border-4 border-white/20" />
+      </div>
+
+      {/* 5. Middle-Right: White 3D Pyramid */}
+      <div className="absolute top-1/3 right-10 lg:right-28 pointer-events-none z-10 transform rotate-12">
+        <div className="relative w-28 h-32">
+          <div className="absolute inset-0 w-0 h-0 border-l-[45px] border-l-transparent border-r-[45px] border-r-transparent border-b-[85px] border-b-white/95 drop-shadow-2xl" />
+          <div className="absolute inset-0 w-0 h-0 border-l-[45px] border-l-transparent border-r-[0px] border-r-transparent border-b-[85px] border-b-slate-200/80" />
         </div>
+      </div>
 
-        {/* Middle-Left White Squiggle */}
-        <div className="absolute top-1/2 left-6 lg:left-20 -translate-y-1/2 pointer-events-none opacity-80">
-          <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-            <path d="M10 10 L25 30 L40 10 L55 30" stroke="#FFFFFF" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </div>
+      {/* 6. Bottom-Right: White 3D Squiggly Ribbon */}
+      <div className="absolute bottom-20 right-8 lg:right-20 pointer-events-none z-10 transform rotate-45">
+        <svg width="100" height="150" viewBox="0 0 100 150" fill="none" className="drop-shadow-2xl">
+          <path
+            d="M15 20 Q 90 40, 30 80 T 80 140"
+            stroke="#FFFFFF"
+            strokeWidth="24"
+            strokeLinecap="round"
+          />
+        </svg>
+      </div>
 
-        {/* Bottom-Left White Torus Ring */}
-        <div className="absolute bottom-12 left-10 lg:left-28 pointer-events-none">
-          <div className="h-16 w-16 rounded-full border-8 border-white/80 shadow-lg transform -rotate-12" />
-        </div>
+      <Container className="relative z-20 text-center flex-1 flex flex-col justify-start">
+        {/* Main Headline */}
+        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.08] max-w-4xl mx-auto">
+          Get Access to Hundreds <br />
+          Courses Available
+        </h1>
 
-        {/* Top-Right Yellow Cylinder */}
-        <div className="absolute top-8 right-6 lg:right-16 pointer-events-none">
-          <div className="h-20 w-12 rounded-3xl bg-[#C4F800] transform rotate-12 shadow-xl" />
-        </div>
+        {/* Subtitle */}
+        <p className="mt-5 text-sm sm:text-base md:text-lg text-blue-100 max-w-2xl mx-auto font-normal opacity-90 leading-relaxed">
+          Unlock your creativity, gain valuable knowledge, and grow your business with our wide range of courses.
+        </p>
 
-        {/* Middle-Right White Cone */}
-        <div className="absolute top-1/3 right-8 lg:right-24 pointer-events-none">
-          <div className="w-0 h-0 border-l-[20px] border-l-transparent border-r-[20px] border-r-transparent border-b-[40px] border-b-white/90 transform rotate-45 shadow-lg" />
-        </div>
-
-        {/* Bottom-Right White Ribbon */}
-        <div className="absolute bottom-16 right-10 lg:right-20 pointer-events-none opacity-80">
-          <svg width="80" height="50" viewBox="0 0 80 50" fill="none">
-            <path d="M5 25 Q 25 5, 45 25 T 75 25" stroke="#FFFFFF" strokeWidth="12" strokeLinecap="round" />
-          </svg>
-        </div>
-
-        <Container className="relative z-10 text-center">
-          {/* Main Headline */}
-          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl text-white leading-[1.15] max-w-4xl mx-auto">
-            Get Access to Hundreds <br className="hidden sm:inline" />
-            Courses Available
-          </h1>
-
-          {/* Subtitle */}
-          <p className="mt-4 text-sm sm:text-base md:text-lg text-blue-100 max-w-xl mx-auto font-normal leading-relaxed">
-            Unlock your creativity, gain valuable knowledge, and grow your business with our wide range of courses.
-          </p>
-
-          {/* Search Pill Input Bar */}
-          <div className="mt-8 max-w-xl mx-auto">
-            <form
-              onSubmit={(e) => e.preventDefault()}
-              className="flex items-center rounded-full bg-white p-1.5 shadow-2xl"
+        {/* Search Bar */}
+        <div className="mt-8 max-w-xl mx-auto w-full">
+          <form
+            onSubmit={(e) => e.preventDefault()}
+            className="flex items-center rounded-full bg-white p-1.5 shadow-2xl border border-slate-100"
+          >
+            <div className="pl-4 text-slate-400">
+              <Search className="h-5 w-5" />
+            </div>
+            <input
+              type="text"
+              placeholder="Course, topic, creator"
+              aria-label="Search course, topic, creator"
+              className="w-full bg-transparent px-3 py-2 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none font-medium"
+            />
+            <button
+              type="submit"
+              className="rounded-full bg-[#C6FF00] px-8 py-3 text-sm font-extrabold text-slate-900 transition-all hover:brightness-105 active:scale-95 shadow-md shrink-0"
             >
-              <div className="pl-4 text-slate-400">
-                <Search className="h-5 w-5" />
-              </div>
-              <input
-                type="text"
-                placeholder="Course, topic, creator"
-                aria-label="Search course, topic, creator"
-                className="w-full bg-transparent px-3 py-2 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none"
+              Search
+            </button>
+          </form>
+        </div>
+
+        {/* Center Student Image & Giant Lime Backdrop Circle */}
+        <div className="mt-12 relative max-w-2xl mx-auto flex justify-center items-end">
+          {/* Giant Lime Circle */}
+          <div className="relative h-[340px] w-[340px] sm:h-[460px] sm:w-[460px] lg:h-[540px] lg:w-[540px] rounded-full bg-[#C6FF00] flex items-end justify-center shadow-2xl">
+            {/* Student Photo */}
+            <div className="relative h-full w-full rounded-full overflow-hidden flex items-end justify-center">
+              <Image
+                src="/images/hero-student.jpg"
+                alt="Student holding laptop with headphones"
+                fill
+                priority
+                className="object-cover object-top"
               />
-              <button
-                type="submit"
-                className="rounded-full bg-[#C4F800] px-7 py-3 text-sm font-extrabold text-slate-900 transition-all hover:bg-brand-lime-bright active:scale-95 shadow-md"
-              >
-                Search
-              </button>
-            </form>
-          </div>
+            </div>
 
-          {/* Center Student Image with Floating Cards */}
-          <div className="mt-14 relative max-w-lg mx-auto flex justify-center items-center">
-            {/* Bright Lime Circle Backdrop */}
-            <div className="relative h-72 w-72 sm:h-96 sm:w-96 md:h-[400px] md:w-[400px] rounded-full bg-[#C4F800] flex items-center justify-center shadow-2xl">
-              {/* Student Image */}
-              <div className="relative h-full w-full rounded-full overflow-hidden border-4 border-white/20">
-                <Image
-                  src="/images/hero-student.jpg"
-                  alt="Student with headphones and laptop"
-                  fill
-                  priority
-                  className="object-cover"
-                />
+            {/* Floating Glass Card 1: Top-Left UI/UX Design */}
+            <div className="absolute top-8 -left-8 sm:top-12 sm:-left-16 bg-white rounded-2xl px-5 py-3.5 shadow-2xl border border-slate-100 text-left min-w-[190px] z-30">
+              <h4 className="text-xs sm:text-sm font-bold text-slate-900">UI/UX Design</h4>
+              <p className="text-[10px] sm:text-xs font-semibold text-slate-500 mt-0.5">200 Courses • 1000+ Students</p>
+            </div>
+
+            {/* Floating Glass Card 2: Top-Right Learning Progress */}
+            <div className="absolute top-10 -right-8 sm:top-16 sm:-right-16 bg-white rounded-2xl p-4 shadow-2xl border border-slate-100 w-48 text-left z-30">
+              <div className="text-[11px] font-semibold text-slate-500 mb-1">Learning Progress</div>
+              <div className="text-2xl font-black text-slate-900 mb-2">55%</div>
+              <div className="h-2 w-full rounded-full bg-slate-100 overflow-hidden">
+                <div className="h-full bg-[#C6FF00] rounded-full w-[55%]" />
               </div>
+            </div>
 
-              {/* Floating Card 1: Top-Left UI/UX Design */}
-              <div className="absolute -top-4 -left-6 sm:top-4 sm:-left-12 bg-white rounded-2xl p-3 shadow-2xl border border-slate-100 flex items-center gap-3 text-left">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-blue/10 text-brand-blue font-bold text-xs">
-                  UI/UX
-                </div>
-                <div>
-                  <h4 className="text-xs font-bold text-slate-900">UI/UX Design</h4>
-                  <p className="text-[10px] font-medium text-slate-500">200 Courses • 1000+ Students</p>
-                </div>
+            {/* Floating Glass Card 3: Bottom-Left Happy Students */}
+            <div className="absolute bottom-10 -left-6 sm:bottom-16 sm:-left-12 bg-white rounded-2xl p-4 shadow-2xl border border-slate-100 text-left min-w-[210px] z-30">
+              <div className="text-xs font-bold text-slate-900">Happy Students</div>
+              <div className="flex items-center gap-1 text-[11px] font-bold text-slate-700 mt-0.5">
+                <span>4.5</span>
+                <span className="text-slate-400 font-normal">(240)</span>
+                <span className="text-amber-400">★</span>
               </div>
-
-              {/* Floating Card 2: Top-Right Learning Progress */}
-              <div className="absolute top-6 -right-6 sm:top-8 sm:-right-10 bg-white rounded-2xl p-3.5 shadow-2xl border border-slate-100 w-44 text-left">
-                <div className="flex items-center justify-between text-[11px] font-bold text-slate-700 mb-1">
-                  <span>Learning Progress</span>
+              <div className="flex items-center mt-2.5">
+                <div className="flex -space-x-2">
+                  <div className="h-6 w-6 rounded-full bg-slate-800 border-2 border-white flex items-center justify-center text-[8px] font-bold text-white">A</div>
+                  <div className="h-6 w-6 rounded-full bg-blue-600 border-2 border-white flex items-center justify-center text-[8px] font-bold text-white">B</div>
+                  <div className="h-6 w-6 rounded-full bg-pink-500 border-2 border-white flex items-center justify-center text-[8px] font-bold text-white">C</div>
+                  <div className="h-6 w-6 rounded-full bg-emerald-600 border-2 border-white flex items-center justify-center text-[8px] font-bold text-white">D</div>
+                  <div className="h-6 w-6 rounded-full bg-amber-600 border-2 border-white flex items-center justify-center text-[8px] font-bold text-white">E</div>
                 </div>
-                <div className="text-xl font-black text-slate-900 mb-1.5">55%</div>
-                <div className="h-2 w-full rounded-full bg-slate-100 overflow-hidden">
-                  <div className="h-full bg-[#0B52E8] rounded-full w-[55%]" />
-                </div>
-              </div>
-
-              {/* Floating Card 3: Bottom-Left Happy Students */}
-              <div className="absolute bottom-2 -left-4 sm:bottom-4 sm:-left-10 bg-white rounded-2xl p-3 shadow-2xl border border-slate-100 text-left">
-                <div className="text-[11px] font-bold text-slate-900">Happy Students</div>
-                <div className="flex items-center gap-1 text-[10px] text-amber-500 font-bold mt-0.5">
-                  <span>4.5</span>
-                  <span className="text-slate-400 font-normal">(240)</span>
-                  <span>★</span>
-                </div>
-                <div className="flex items-center mt-2">
-                  <div className="flex -space-x-2">
-                    <div className="h-6 w-6 rounded-full bg-blue-500 border-2 border-white flex items-center justify-center text-[8px] font-bold text-white">S</div>
-                    <div className="h-6 w-6 rounded-full bg-emerald-500 border-2 border-white flex items-center justify-center text-[8px] font-bold text-white">M</div>
-                    <div className="h-6 w-6 rounded-full bg-purple-500 border-2 border-white flex items-center justify-center text-[8px] font-bold text-white">A</div>
-                  </div>
-                  <span className="ml-2 text-[10px] font-bold text-slate-700 bg-slate-100 px-1.5 py-0.5 rounded-full">2K+</span>
-                </div>
+                <span className="ml-2 text-[10px] font-extrabold text-slate-900 bg-[#C6FF00] px-2 py-0.5 rounded-full">
+                  2K+
+                </span>
               </div>
             </div>
           </div>
-        </Container>
-      </section>
-
-      {/* Sponsor / Partner Logo Cloud Row */}
-      <section className="bg-slate-50 border-b border-slate-200 py-6">
-        <Container className="flex flex-wrap items-center justify-center gap-8 md:gap-16 opacity-60">
-          {[1, 2, 3, 4, 5].map((i) => (
-            <div key={i} className="flex items-center gap-2 font-bold text-slate-600 text-base">
-              <div className="h-5 w-5 rounded-full bg-slate-400/30" />
-              <span>Logoipsum</span>
-            </div>
-          ))}
-        </Container>
-      </section>
-    </>
+        </div>
+      </Container>
+    </section>
   );
 };
 

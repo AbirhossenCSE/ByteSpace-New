@@ -1,34 +1,34 @@
 import { FooterLinkGroup } from '@/types';
 
-export const footerLinkGroups: FooterLinkGroup[] = [
+export const footerColumns = [
   {
-    id: 'f-1',
-    title: 'Explore',
+    id: 'col-1',
     links: [
-      { label: 'Web Development', href: '#courses' },
-      { label: 'UI/UX Design', href: '#courses' },
-      { label: 'Data Science', href: '#courses' },
-      { label: 'Business & Finance', href: '#courses' },
+      { label: 'Featured Courses', href: '#courses' },
+      { label: 'Featured Categories', href: '#courses' },
+      { label: 'Business', href: '#courses' },
+      { label: 'IT', href: '#courses' },
+      { label: 'Design', href: '#courses' },
     ],
   },
   {
-    id: 'f-2',
-    title: 'Platform',
+    id: 'col-2',
     links: [
-      { label: 'About Us', href: '#about' },
-      { label: 'Become an Instructor', href: '#creators' },
-      { label: 'Careers', href: '#' },
-      { label: 'Blog & Insights', href: '#' },
+      { label: 'Development', href: '#courses' },
+      { label: 'Marketing', href: '#courses' },
+      { label: 'Photography', href: '#courses' },
+      { label: 'Finance', href: '#courses' },
+      { label: 'Sport', href: '#courses' },
     ],
   },
   {
-    id: 'f-3',
-    title: 'Support',
+    id: 'col-3',
     links: [
-      { label: 'Help Center', href: '#' },
-      { label: 'Contact Us', href: '#' },
-      { label: 'Terms of Service', href: '#' },
-      { label: 'Privacy Policy', href: '#' },
+      { label: 'Become a Creator', href: '#creators' },
+      { label: 'Affiliate Program', href: '#' },
+      { label: 'Contact', href: '#' },
+      { label: 'Help', href: '#' },
+      { label: 'About', href: '#about' },
     ],
   },
 ];

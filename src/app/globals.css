@@ -13,8 +13,9 @@ body {
 }
 
 .bg-hero-grid {
-  background-color: #0B52E8;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-  background-size: 40px 40px;
+  background-color: #0050FF;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+  background-size: 60px 60px;
 }
