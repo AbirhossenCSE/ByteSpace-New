@@ -4,14 +4,20 @@ export interface Course {
   category: string;
   instructor: string;
   rating: number;
-  reviewsCount: number;
-  studentsCount: number;
+  reviewsCount?: number;
+  studentsCount?: number;
   price: number;
+  priceUnit?: string;
   originalPrice?: number;
   image: string;
   level: 'Beginner' | 'Intermediate' | 'Advanced' | 'All Levels';
   badge?: string;
   isPopular?: boolean;
+  lessons: string;
+  duration: string;
+  commentsCount: number;
+  avatars?: string[];
+  extraStudentsCount?: string;
 }
 
 export interface Category {

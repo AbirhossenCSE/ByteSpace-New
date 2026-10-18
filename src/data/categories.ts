@@ -8,3 +8,24 @@ export const categories: Category[] = [
   { id: '5', name: 'Business & Finance', iconName: 'Briefcase', courseCount: 78, slug: 'business-finance' },
   { id: '6', name: 'Artificial Intelligence', iconName: 'Cpu', courseCount: 110, slug: 'artificial-intelligence' },
 ];
+
+export const discoveryFilterCategories = [
+  'Featured',
+  'Music',
+  'Drawing & Painting',
+  'Marketing',
+  'Animation',
+  'Social Media',
+  'UI/UX Design',
+  'Creative Marketing',
+  'Digital Illustration',
+  'Film & Video',
+  'Crafts',
+  'Freelance & Entrepreneurship',
+  'Graphic Design',
+  'Photography',
+  'Productivity',
+  'Web Development',
+  'Data Science',
+  'Cooking',
+];
