@@ -3,32 +3,29 @@ import { Testimonial } from '@/types';
 export const testimonials: Testimonial[] = [
   {
     id: 't-1',
-    name: 'Emily Watson',
-    role: 'Frontend Developer',
-    company: 'TechCorp',
-    avatar: '/images/testimonials/avatar-1.jpg',
+    name: 'Sarah M.',
+    role: 'Enthusiastic Learner',
+    avatar: '/images/testimonials/avatar-sarah.png',
     content:
-      'ByteSpace transformed my career path completely. The practical projects and clear instructor guidance helped me land my dream software developer position.',
+      'ByteSpace has transformed my approach to learning. The diverse range of courses and the quality of content provided by creators have exceeded my expectations. The platform truly fosters a sense of community and lifelong learning.',
     rating: 5,
   },
   {
     id: 't-2',
-    name: 'Marcus Vance',
-    role: 'Product Designer',
-    company: 'CreativeLab',
-    avatar: '/images/testimonials/avatar-2.jpg',
+    name: 'James L.',
+    role: 'Lifelong Learner',
+    avatar: '/images/testimonials/avatar-james.png',
     content:
-      'The quality of UI/UX courses here is outstanding. Highly interactive learning paths made learning complex design systems seamless and fun.',
+      "I've tried several online learning platforms, and ByteSpace stands out for its vibrant community and the variety of courses available. The easy navigation and engaging content make it a go-to platform for continuous skill development.",
     rating: 5,
   },
   {
     id: 't-3',
-    name: 'Sophia Patel',
-    role: 'Data Analyst',
-    company: 'FinAnalytics',
-    avatar: '/images/testimonials/avatar-3.jpg',
+    name: 'Alex B.',
+    role: 'Inspired Creator',
+    avatar: '/images/testimonials/avatar-alex.png',
     content:
-      'I loved how self-paced the modules are. The courses helped me transition into data analytics with confidence and strong portfolio projects.',
+      "As a creator, ByteSpace has been a game-changer for me. The Course Editor is user-friendly, and the support from the community is incredible. It's fulfilling to see my courses making a positive impact on learners globally.",
     rating: 5,
   },
 ];
