@@ -2,13 +2,26 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu, X, ShoppingBag, ArrowRight } from 'lucide-react';
+import {
+  Menu,
+  X,
+  ShoppingBag,
+  Sparkles,
+  ArrowRight,
+  ChevronDown,
+  Layers,
+  Code2,
+  PenTool,
+  BarChart3,
+  Search,
+} from 'lucide-react';
 import Container from './Container';
 import { SITE_CONFIG } from '@/constants/site';
 
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [showExploreMenu, setShowExploreMenu] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,166 +35,239 @@ export const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const categories = [
+    { name: 'UI/UX & Product Design', icon: PenTool, count: '85+ courses' },
+    { name: 'Full-Stack Development', icon: Code2, count: '120+ courses' },
+    { name: 'AI & Data Science', icon: Sparkles, count: '95+ courses' },
+    { name: 'Business & Management', icon: BarChart3, count: '70+ courses' },
+  ];
+
   return (
     <header
       className={`sticky top-0 w-full z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-[#0048E5]/95 backdrop-blur-md shadow-lg shadow-blue-950/20 border-b border-white/15 py-1'
-          : 'bg-[#0050FF] bg-hero-grid border-b border-white/10'
-      } text-white`}
+          ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-200/80 py-2'
+          : 'bg-white border-b border-slate-100 py-3'
+      }`}
     >
-      <Container className="flex h-20 items-center justify-between">
-        {/* Brand Logo */}
-        <Link
-          href="/"
-          className="group flex items-center gap-2.5 font-bold text-white text-2xl transition-transform hover:scale-[1.02]"
-        >
-          {/* Custom Stylized Lime Logo Mark */}
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#C6FF00] text-slate-900 font-black text-xl leading-none shadow-sm transition-transform duration-300 group-hover:rotate-6">
-            {SITE_CONFIG.logoMark || SITE_CONFIG.name.charAt(0)}
-          </div>
-          <span className="font-extrabold tracking-tight text-2xl text-white">
-            {SITE_CONFIG.name}
-          </span>
-        </Link>
-
-        {/* Desktop Nav Links */}
-        <nav className="hidden items-center gap-7 lg:gap-8 md:flex">
+      <Container className="flex items-center justify-between">
+        {/* Left: Brand Logo & Explore Dropdown */}
+        <div className="flex items-center gap-7">
           <Link
             href="/"
-            className="text-sm font-semibold text-white transition-colors hover:text-[#C6FF00]"
+            className="group flex items-center gap-2.5 font-bold text-slate-900 text-2xl transition-transform hover:scale-[1.01]"
           >
-            Home
+            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#C6FF00] text-slate-900 font-black text-xl leading-none shadow-sm transition-transform duration-300 group-hover:rotate-6">
+              {SITE_CONFIG.logoMark || SITE_CONFIG.name.charAt(0)}
+            </div>
+            <span className="font-extrabold tracking-tight text-2xl text-slate-900">
+              {SITE_CONFIG.name}
+            </span>
           </Link>
+
+          {/* Explore Courses Menu (Desktop) */}
+          <div className="relative hidden lg:block">
+            <button
+              type="button"
+              onClick={() => setShowExploreMenu(!showExploreMenu)}
+              className="inline-flex items-center gap-2 rounded-full bg-slate-100/90 hover:bg-slate-200/80 px-4 py-2 text-xs font-bold text-slate-700 transition-colors"
+            >
+              <Layers className="h-3.5 w-3.5 text-[#0050FF]" />
+              <span>Explore</span>
+              <ChevronDown
+                className={`h-3 w-3 text-slate-400 transition-transform duration-200 ${
+                  showExploreMenu ? 'rotate-180' : ''
+                }`}
+              />
+            </button>
+
+            {showExploreMenu && (
+              <div
+                className="absolute top-full left-0 mt-2 w-72 rounded-2xl bg-white p-3 shadow-xl border border-slate-100 animate-fadeIn z-50"
+                onMouseLeave={() => setShowExploreMenu(false)}
+              >
+                <div className="px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                  Popular Categories
+                </div>
+                <div className="space-y-1 mt-1">
+                  {categories.map((cat) => {
+                    const Icon = cat.icon;
+                    return (
+                      <Link
+                        key={cat.name}
+                        href="#courses"
+                        onClick={() => setShowExploreMenu(false)}
+                        className="flex items-center gap-3 rounded-xl px-3 py-2 text-sm text-slate-700 hover:bg-blue-50/80 hover:text-[#0050FF] transition-colors group"
+                      >
+                        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-100 group-hover:bg-[#0050FF] text-slate-600 group-hover:text-white transition-colors">
+                          <Icon className="h-4 w-4" />
+                        </div>
+                        <div>
+                          <div className="font-semibold text-xs leading-none text-slate-900 group-hover:text-[#0050FF]">
+                            {cat.name}
+                          </div>
+                          <span className="text-[10px] text-slate-400">{cat.count}</span>
+                        </div>
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Center: Desktop Nav Links */}
+        <nav className="hidden items-center gap-6 xl:gap-8 md:flex">
           <Link
             href="#courses"
-            className="text-sm font-semibold text-white/85 transition-colors hover:text-white"
+            className="text-sm font-semibold text-slate-600 transition-colors hover:text-[#0050FF]"
           >
             Courses
           </Link>
           <Link
             href="#paths"
-            className="text-sm font-semibold text-white/85 transition-colors hover:text-white"
+            className="text-sm font-semibold text-slate-600 transition-colors hover:text-[#0050FF]"
           >
-            Learning Paths
+            Career Paths
+          </Link>
+          <Link
+            href="#why-us"
+            className="text-sm font-semibold text-slate-600 transition-colors hover:text-[#0050FF]"
+          >
+            Why {SITE_CONFIG.shortName}
           </Link>
           <Link
             href="#manage-courses"
-            className="text-sm font-semibold text-white/85 transition-colors hover:text-white"
+            className="text-sm font-semibold text-slate-600 transition-colors hover:text-[#0050FF]"
           >
             Teach
           </Link>
           <Link
-            href="#creators"
-            className="text-sm font-semibold text-white/85 transition-colors hover:text-white"
+            href="#faq"
+            className="text-sm font-semibold text-slate-600 transition-colors hover:text-[#0050FF]"
           >
-            Creators
+            FAQ
           </Link>
         </nav>
 
-        {/* Desktop Right Actions */}
-        <div className="hidden items-center gap-5 md:flex">
+        {/* Right: Actions */}
+        <div className="hidden items-center gap-4 md:flex">
+          {/* Quick Search Shortcut */}
+          <Link
+            href="#courses"
+            className="flex h-9 w-9 items-center justify-center rounded-full text-slate-600 hover:bg-slate-100 transition-colors"
+            aria-label="Search courses"
+          >
+            <Search className="h-4 w-4" />
+          </Link>
+
+          {/* Cart with Indicator */}
+          <Link
+            href="#courses"
+            aria-label="Shopping Cart"
+            className="relative flex h-9 w-9 items-center justify-center rounded-full text-slate-600 hover:bg-slate-100 transition-colors"
+          >
+            <ShoppingBag className="h-4 w-4 stroke-[2.2]" />
+            <span className="absolute 1 top-1 right-1 flex h-4 w-4 items-center justify-center rounded-full bg-[#0050FF] text-[9px] font-black text-white">
+              2
+            </span>
+          </Link>
+
           <Link
             href="/login"
-            className="text-sm font-semibold text-white/90 transition-opacity hover:opacity-100 hover:text-[#C6FF00]"
+            className="text-sm font-semibold text-slate-700 transition-colors hover:text-[#0050FF] px-2"
           >
             Sign In
           </Link>
+
           <Link
             href="/signup"
-            className="group inline-flex items-center gap-1.5 rounded-full bg-white/10 border border-white/30 px-5 py-2 text-sm font-bold text-white transition-all duration-200 hover:bg-[#C6FF00] hover:border-[#C6FF00] hover:text-slate-900 active:scale-95"
+            className="group inline-flex items-center gap-2 rounded-full bg-[#0050FF] hover:bg-[#0042D9] px-5 py-2.5 text-xs sm:text-sm font-bold text-white shadow-md shadow-blue-500/20 transition-all hover:scale-[1.02] active:scale-95"
           >
-            <span>Join Us</span>
+            <span>Get Started</span>
             <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
           </Link>
-          <button
-            type="button"
-            aria-label="Shopping bag"
-            className="relative flex h-9 w-9 items-center justify-center rounded-full text-white hover:bg-white/10 transition-colors"
-          >
-            <ShoppingBag className="h-5 w-5 stroke-[2.2]" />
-            <span className="absolute -top-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-[#C6FF00] text-[10px] font-extrabold text-slate-900">
-              2
-            </span>
-          </button>
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Menu Toggle */}
         <div className="flex items-center gap-2 md:hidden">
-          <button
-            type="button"
-            aria-label="Shopping bag"
-            className="relative flex h-9 w-9 items-center justify-center rounded-full text-white hover:bg-white/10 transition-colors mr-1"
+          <Link
+            href="#courses"
+            className="relative flex h-9 w-9 items-center justify-center rounded-full text-slate-700 hover:bg-slate-100 transition-colors"
+            aria-label="Shopping Cart"
           >
-            <ShoppingBag className="h-5 w-5 stroke-[2.2]" />
-            <span className="absolute -top-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-[#C6FF00] text-[10px] font-extrabold text-slate-900">
+            <ShoppingBag className="h-4 w-4" />
+            <span className="absolute top-1 right-1 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-[#0050FF] text-[8px] font-black text-white">
               2
             </span>
-          </button>
+          </Link>
+
           <button
             type="button"
             aria-label="Toggle menu"
             onClick={() => setIsOpen(!isOpen)}
-            className="flex h-10 w-10 items-center justify-center rounded-lg text-white hover:bg-white/10"
+            className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-800 hover:bg-slate-50 transition-colors"
           >
-            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
       </Container>
 
       {/* Mobile Drawer */}
       {isOpen && (
-        <div className="bg-[#0042D9] px-6 py-5 md:hidden border-t border-white/15 animate-fadeIn">
-          <nav className="flex flex-col gap-3.5">
-            <Link
-              href="/"
-              onClick={() => setIsOpen(false)}
-              className="text-base font-semibold text-white hover:text-[#C6FF00]"
-            >
-              Home
-            </Link>
+        <div className="bg-white px-6 py-6 md:hidden border-t border-slate-100 shadow-xl animate-fadeIn">
+          <nav className="flex flex-col gap-4">
             <Link
               href="#courses"
               onClick={() => setIsOpen(false)}
-              className="text-base font-medium text-white/85 hover:text-white"
+              className="text-base font-semibold text-slate-800 hover:text-[#0050FF]"
             >
-              Courses
+              Browse All Courses
             </Link>
             <Link
               href="#paths"
               onClick={() => setIsOpen(false)}
-              className="text-base font-medium text-white/85 hover:text-white"
+              className="text-base font-semibold text-slate-800 hover:text-[#0050FF]"
             >
-              Learning Paths
+              Career Roadmaps
+            </Link>
+            <Link
+              href="#why-us"
+              onClick={() => setIsOpen(false)}
+              className="text-base font-semibold text-slate-800 hover:text-[#0050FF]"
+            >
+              Why {SITE_CONFIG.shortName}
             </Link>
             <Link
               href="#manage-courses"
               onClick={() => setIsOpen(false)}
-              className="text-base font-medium text-white/85 hover:text-white"
+              className="text-base font-semibold text-slate-800 hover:text-[#0050FF]"
             >
-              Teach
+              Teach & Earn
             </Link>
             <Link
-              href="#creators"
+              href="#faq"
               onClick={() => setIsOpen(false)}
-              className="text-base font-medium text-white/85 hover:text-white"
+              className="text-base font-semibold text-slate-800 hover:text-[#0050FF]"
             >
-              Creators
+              Frequently Asked Questions
             </Link>
-            <div className="mt-4 flex flex-col gap-2.5 pt-4 border-t border-white/15">
+
+            <div className="mt-4 flex flex-col gap-2.5 pt-4 border-t border-slate-100">
               <Link
                 href="/login"
                 onClick={() => setIsOpen(false)}
-                className="text-white text-center py-2 text-sm font-semibold"
+                className="text-center py-2.5 text-sm font-bold text-slate-700 bg-slate-100 rounded-full"
               >
                 Sign In
               </Link>
               <Link
                 href="/signup"
                 onClick={() => setIsOpen(false)}
-                className="rounded-full bg-[#C6FF00] text-center py-2.5 text-sm font-extrabold text-slate-900 shadow-md"
+                className="rounded-full bg-[#0050FF] text-center py-3 text-sm font-extrabold text-white shadow-md shadow-blue-500/20"
               >
-                Join Us
+                Get Started Free
               </Link>
             </div>
           </nav>

@@ -1,58 +1,70 @@
 import React from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import Container from '@/components/layout/Container';
+import { Sparkles, ArrowRight, ShieldCheck, CheckCircle2 } from 'lucide-react';
 import { SITE_CONFIG } from '@/constants/site';
 
 export const CreatorCta: React.FC = () => {
   return (
     <section
       id="creators"
-      className="relative overflow-hidden bg-[#0050FF] bg-hero-grid py-20 lg:py-24 text-white selection:bg-[#C6FF00] selection:text-slate-900 border-b border-white/10"
-      aria-labelledby="creator-cta-heading"
+      className="relative overflow-hidden bg-slate-900 py-20 lg:py-24 text-white"
     >
-      {/* Anchor for backward compatibility with id="creator-cta" */}
+      {/* Backward compatible anchor for #creator-cta */}
       <div id="creator-cta" className="absolute -top-20 opacity-0 pointer-events-none" />
 
-      {/* 3D Decorative Background Collage matching the exact Figma design */}
-      <div className="absolute inset-0 z-0 pointer-events-none flex justify-center items-center overflow-hidden">
-        <div className="relative w-full h-full max-w-[1440px] min-h-[440px] opacity-40 sm:opacity-80 lg:opacity-100 transition-opacity">
-          <Image
-            src="/images/creator-cta-bg.png"
-            alt={`${SITE_CONFIG.name} creator 3D shapes`}
-            fill
-            priority
-            className="object-cover object-center"
-          />
-        </div>
-      </div>
+      {/* Ambient background glow accents */}
+      <div className="absolute -top-24 -left-24 h-96 w-96 rounded-full bg-[#0050FF]/30 blur-[130px] pointer-events-none" />
+      <div className="absolute -bottom-24 -right-24 h-96 w-96 rounded-full bg-[#C6FF00]/15 blur-[130px] pointer-events-none" />
 
-      <Container className="relative z-10 mx-auto flex flex-col items-center justify-center text-center">
-        {/* Main Headline */}
-        <h2
-          id="creator-cta-heading"
-          className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold tracking-tight text-white leading-[1.18] max-w-3xl mx-auto"
-        >
-          Unlock Your Potential as a <br className="hidden sm:inline" />
-          Creator with {SITE_CONFIG.name}
+      <Container className="relative z-10 mx-auto text-center max-w-4xl">
+        <div className="inline-flex items-center gap-1.5 rounded-full bg-white/10 backdrop-blur-md px-4 py-1.5 text-xs font-bold text-[#C6FF00] border border-white/15 mb-6">
+          <Sparkles className="h-3.5 w-3.5" />
+          <span>Join Over 120,000+ Lifelong Learners Today</span>
+        </div>
+
+        <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.08]">
+          Ready to Level Up Your Career <br />
+          with {SITE_CONFIG.name}?
         </h2>
 
-        {/* Descriptive Subtitle */}
-        <p className="mt-5 sm:mt-6 text-sm sm:text-base text-blue-100/90 max-w-3xl mx-auto font-normal leading-relaxed">
-          Experience the collaboration of numerous creators and an expanding selection of courses.
-          Register now and become a part of a community comprising over 10,000 local and
-          international creators. Utilize our Course Editor, and showcase your expertise by
-          publishing your finest course on the {SITE_CONFIG.name} Course Library.
+        <p className="mt-6 text-sm sm:text-lg text-slate-300 max-w-2xl mx-auto font-normal leading-relaxed">
+          Get unlimited access to 250+ project-based courses, direct feedback from industry mentors,
+          and verifiable certificates. Start your free trial today.
         </p>
 
-        {/* CTA Button */}
-        <div className="mt-8 sm:mt-10">
+        {/* Action Buttons */}
+        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link
-            href="/signup?role=creator"
-            className="inline-flex items-center justify-center rounded-full bg-[#C6FF00] px-8 py-3.5 text-sm sm:text-base font-extrabold text-slate-900 shadow-xl shadow-blue-950/20 transition-all duration-200 hover:brightness-105 hover:scale-[1.03] active:scale-95"
+            href="/signup"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-[#C6FF00] hover:bg-[#b8f000] px-8 py-4 text-sm sm:text-base font-extrabold text-slate-900 shadow-xl shadow-lime-500/10 transition-all hover:scale-[1.03] active:scale-95"
           >
-            Join as Creator
+            <span>Get Started for Free</span>
+            <ArrowRight className="h-4 w-4" />
           </Link>
+
+          <Link
+            href="#courses"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-white/10 hover:bg-white/20 px-8 py-4 text-sm sm:text-base font-bold text-white border border-white/20 transition-colors"
+          >
+            <span>Browse All Courses</span>
+          </Link>
+        </div>
+
+        {/* Guarantees */}
+        <div className="mt-10 pt-8 border-t border-white/10 flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs text-slate-400">
+          <div className="flex items-center gap-2">
+            <CheckCircle2 className="h-4 w-4 text-[#C6FF00]" />
+            <span>No Credit Card Required</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <ShieldCheck className="h-4 w-4 text-emerald-400" />
+            <span>30-Day Money-Back Guarantee</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <CheckCircle2 className="h-4 w-4 text-[#C6FF00]" />
+            <span>Cancel Anytime in 1-Click</span>
+          </div>
         </div>
       </Container>
     </section>
