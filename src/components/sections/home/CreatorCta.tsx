@@ -2,12 +2,13 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Container from '@/components/layout/Container';
+import { SITE_CONFIG } from '@/constants/site';
 
 export const CreatorCta: React.FC = () => {
   return (
     <section
       id="creators"
-      className="relative overflow-hidden bg-[#0050FF] bg-hero-grid py-20 lg:py-24 text-white selection:bg-[#C6FF00] selection:text-slate-900"
+      className="relative overflow-hidden bg-[#0050FF] bg-hero-grid py-20 lg:py-24 text-white selection:bg-[#C6FF00] selection:text-slate-900 border-b border-white/10"
       aria-labelledby="creator-cta-heading"
     >
       {/* Anchor for backward compatibility with id="creator-cta" */}
@@ -18,7 +19,7 @@ export const CreatorCta: React.FC = () => {
         <div className="relative w-full h-full max-w-[1440px] min-h-[440px] opacity-40 sm:opacity-80 lg:opacity-100 transition-opacity">
           <Image
             src="/images/creator-cta-bg.png"
-            alt="ByteSpace creator 3D shapes"
+            alt={`${SITE_CONFIG.name} creator 3D shapes`}
             fill
             priority
             className="object-cover object-center"
@@ -33,7 +34,7 @@ export const CreatorCta: React.FC = () => {
           className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold tracking-tight text-white leading-[1.18] max-w-3xl mx-auto"
         >
           Unlock Your Potential as a <br className="hidden sm:inline" />
-          Creator with ByteSpace
+          Creator with {SITE_CONFIG.name}
         </h2>
 
         {/* Descriptive Subtitle */}
@@ -41,14 +42,14 @@ export const CreatorCta: React.FC = () => {
           Experience the collaboration of numerous creators and an expanding selection of courses.
           Register now and become a part of a community comprising over 10,000 local and
           international creators. Utilize our Course Editor, and showcase your expertise by
-          publishing your finest course on the ByteSpace Course Library.
+          publishing your finest course on the {SITE_CONFIG.name} Course Library.
         </p>
 
         {/* CTA Button */}
         <div className="mt-8 sm:mt-10">
           <Link
             href="/signup?role=creator"
-            className="inline-flex items-center justify-center rounded-full bg-[#C6FF00] px-8 py-3.5 text-sm sm:text-base font-extrabold text-slate-900 shadow-lg shadow-black/10 transition-all duration-200 hover:brightness-105 hover:scale-[1.02] active:scale-95"
+            className="inline-flex items-center justify-center rounded-full bg-[#C6FF00] px-8 py-3.5 text-sm sm:text-base font-extrabold text-slate-900 shadow-xl shadow-blue-950/20 transition-all duration-200 hover:brightness-105 hover:scale-[1.03] active:scale-95"
           >
             Join as Creator
           </Link>

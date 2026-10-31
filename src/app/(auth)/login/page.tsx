@@ -1,10 +1,11 @@
 import React from 'react';
 import AuthLayout from '@/components/auth/AuthLayout';
 import LoginForm from '@/components/auth/LoginForm';
+import { SITE_CONFIG } from '@/constants/site';
 
 export const metadata = {
   title: 'Sign In',
-  description: 'Sign in to your ByteSpace account to access your courses.',
+  description: `Sign in to your ${SITE_CONFIG.name} account to access your courses.`,
 };
 
 export default function LoginPage() {

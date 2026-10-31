@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { BookOpen } from 'lucide-react';
+import { SITE_CONFIG } from '@/constants/site';
 
 interface AuthLayoutProps {
   children: React.ReactNode;
@@ -12,12 +12,12 @@ export const AuthLayout: React.FC<AuthLayoutProps> = ({ children, title, subtitl
   return (
     <div className="flex min-h-screen flex-col justify-center bg-slate-50 py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <Link href="/" className="flex items-center justify-center gap-2 font-bold text-slate-900">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-blue text-white">
-            <BookOpen className="h-6 w-6" />
+        <Link href="/" className="flex items-center justify-center gap-2.5 font-bold text-slate-900 group">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#C6FF00] text-slate-900 font-black text-xl shadow-sm transition-transform duration-300 group-hover:rotate-6">
+            {SITE_CONFIG.logoMark || SITE_CONFIG.name.charAt(0)}
           </div>
-          <span className="text-2xl font-extrabold tracking-tight">
-            Byte<span className="text-brand-blue">Space</span>
+          <span className="text-2xl font-extrabold tracking-tight text-slate-900">
+            {SITE_CONFIG.name}
           </span>
         </Link>
         <h2 className="mt-6 text-center text-2xl font-bold tracking-tight text-slate-900">

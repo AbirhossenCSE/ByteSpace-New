@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Input from '@/components/ui/Input';
 import Button from '@/components/ui/Button';
+import { SITE_CONFIG } from '@/constants/site';
 
 export const SignupForm: React.FC = () => {
   const [name, setName] = useState('');
@@ -46,7 +47,7 @@ export const SignupForm: React.FC = () => {
     <form onSubmit={handleSubmit} className="space-y-4">
       {isSubmitted && (
         <div className="rounded-lg bg-green-50 p-3 text-xs text-green-700 font-medium border border-green-200">
-          Account created successfully! Welcome to ByteSpace.
+          Account created successfully! Welcome to {SITE_CONFIG.name}.
         </div>
       )}
 
