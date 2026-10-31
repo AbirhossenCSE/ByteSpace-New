@@ -1,156 +1,278 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import Container from '@/components/layout/Container';
-import { Search } from 'lucide-react';
+import {
+  Search,
+  Sparkles,
+  Play,
+  CheckCircle2,
+  Star,
+  Users,
+  Award,
+  ArrowRight,
+  TrendingUp,
+  ShieldCheck,
+  Code,
+  Laptop,
+} from 'lucide-react';
+import { SITE_CONFIG } from '@/constants/site';
 
 export const Hero: React.FC = () => {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [activeTab, setActiveTab] = useState<'preview' | 'curriculum'>('preview');
+
+  const popularTags = [
+    'Next.js 14',
+    'UI/UX Design',
+    'Python & AI',
+    'Figma Tokens',
+    'Data Science',
+  ];
+
   return (
-    <section id="hero" className="relative overflow-hidden bg-[#0050FF] bg-hero-grid pt-12 pb-0 lg:pt-16 text-white min-h-[750px] flex flex-col justify-between">
-      {/* 3D Decorative Floating Shapes - Replicating exact screenshot shapes */}
+    <section className="relative overflow-hidden bg-gradient-to-b from-slate-50 via-white to-white pt-10 pb-16 lg:pt-16 lg:pb-24 border-b border-slate-100">
+      {/* Soft Ambient Radial Glows */}
+      <div className="absolute top-0 left-1/4 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#0050FF]/8 blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/3 right-10 h-[480px] w-[480px] rounded-full bg-[#C6FF00]/20 blur-[130px] pointer-events-none" />
 
-      {/* 1. Top-Left: Bright Lime 3D Spring Ribbon */}
-      <div className="absolute top-10 -left-6 sm:left-4 lg:left-10 pointer-events-none z-10">
-        <svg width="140" height="200" viewBox="0 0 140 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="drop-shadow-2xl">
-          <path
-            d="M20 30 Q 120 10, 70 80 T 30 140 T 100 180"
-            stroke="#C6FF00"
-            strokeWidth="32"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </div>
-
-      {/* 2. Middle-Left: White 3D Squiggly Spring */}
-      <div className="absolute top-1/2 left-8 lg:left-24 -translate-y-1/2 pointer-events-none z-10">
-        <svg width="90" height="90" viewBox="0 0 90 90" fill="none" className="drop-shadow-xl">
-          <path
-            d="M15 20 L40 45 L15 70 L65 45 L40 20"
-            stroke="#FFFFFF"
-            strokeWidth="16"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </div>
-
-      {/* 3. Bottom-Left: White 3D Torus Donut Ring */}
-      <div className="absolute bottom-16 left-6 lg:left-16 pointer-events-none z-10 transform -rotate-45">
-        <div className="h-28 w-44 sm:h-32 sm:w-48 rounded-[100%] border-[22px] border-white shadow-2xl bg-transparent" />
-      </div>
-
-      {/* 4. Top-Right: Bright Lime 3D Cylinder */}
-      <div className="absolute top-12 -right-8 sm:right-6 lg:right-14 pointer-events-none z-10 transform rotate-12">
-        <div className="h-44 w-24 sm:h-52 sm:w-28 rounded-[50px] bg-[#C6FF00] shadow-2xl border-4 border-white/20" />
-      </div>
-
-      {/* 5. Middle-Right: White 3D Pyramid */}
-      <div className="absolute top-1/3 right-10 lg:right-28 pointer-events-none z-10 transform rotate-12">
-        <div className="relative w-28 h-32">
-          <div className="absolute inset-0 w-0 h-0 border-l-[45px] border-l-transparent border-r-[45px] border-r-transparent border-b-[85px] border-b-white/95 drop-shadow-2xl" />
-          <div className="absolute inset-0 w-0 h-0 border-l-[45px] border-l-transparent border-r-[0px] border-r-transparent border-b-[85px] border-b-slate-200/80" />
-        </div>
-      </div>
-
-      {/* 6. Bottom-Right: White 3D Squiggly Ribbon */}
-      <div className="absolute bottom-20 right-8 lg:right-20 pointer-events-none z-10 transform rotate-45">
-        <svg width="100" height="150" viewBox="0 0 100 150" fill="none" className="drop-shadow-2xl">
-          <path
-            d="M15 20 Q 90 40, 30 80 T 80 140"
-            stroke="#FFFFFF"
-            strokeWidth="24"
-            strokeLinecap="round"
-          />
-        </svg>
-      </div>
-
-      <Container className="relative z-20 text-center flex-1 flex flex-col justify-start">
-        {/* Main Headline */}
-        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.08] max-w-4xl mx-auto">
-          Get Access to Hundreds <br />
-          Courses Available
-        </h1>
-
-        {/* Subtitle */}
-        <p className="mt-5 text-sm sm:text-base md:text-lg text-blue-100 max-w-2xl mx-auto font-normal opacity-90 leading-relaxed">
-          Unlock your creativity, gain valuable knowledge, and grow your business with our wide range of courses.
-        </p>
-
-        {/* Search Bar */}
-        <div className="mt-8 max-w-xl mx-auto w-full">
-          <form
-            onSubmit={(e) => e.preventDefault()}
-            className="flex items-center rounded-full bg-white p-1.5 shadow-2xl border border-slate-100"
-          >
-            <div className="pl-4 text-slate-400">
-              <Search className="h-5 w-5" />
-            </div>
-            <input
-              type="text"
-              placeholder="Course, topic, creator"
-              aria-label="Search course, topic, creator"
-              className="w-full bg-transparent px-3 py-2 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none font-medium"
-            />
-            <button
-              type="submit"
-              className="rounded-full bg-[#C6FF00] px-8 py-3 text-sm font-extrabold text-slate-900 transition-all hover:brightness-105 active:scale-95 shadow-md shrink-0"
-            >
-              Search
-            </button>
-          </form>
-        </div>
-
-        {/* Center Student Image & Giant Lime Backdrop Circle */}
-        <div className="mt-12 relative max-w-2xl mx-auto flex justify-center items-end">
-          {/* Giant Lime Circle */}
-          <div className="relative h-[340px] w-[340px] sm:h-[460px] sm:w-[460px] lg:h-[540px] lg:w-[540px] rounded-full bg-[#C6FF00] flex items-end justify-center shadow-2xl">
-            {/* Student Photo */}
-            <div className="relative h-full w-full rounded-full overflow-hidden flex items-end justify-center">
-              <Image
-                src="/images/hero-student.jpg"
-                alt="Student holding laptop with headphones"
-                fill
-                priority
-                className="object-cover object-top"
-              />
+      <Container className="relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          {/* Left Column: Value Proposition & Search */}
+          <div className="lg:col-span-7 flex flex-col items-start text-left">
+            {/* Announcement Pill */}
+            <div className="inline-flex items-center gap-2 rounded-full bg-white border border-slate-200/90 px-3.5 py-1.5 text-xs font-bold text-slate-800 shadow-sm mb-6 hover:border-[#0050FF]/40 transition-colors">
+              <span className="flex h-2 w-2 rounded-full bg-[#0050FF] animate-pulse" />
+              <span className="text-[#0050FF] font-extrabold">SkillSphere 2.0</span>
+              <span className="text-slate-300">|</span>
+              <span className="text-slate-600 font-semibold">Over 250+ Hands-On Courses</span>
+              <Sparkles className="h-3.5 w-3.5 text-amber-500" />
             </div>
 
-            {/* Floating Glass Card 1: Top-Left UI/UX Design */}
-            <div className="absolute top-8 -left-8 sm:top-12 sm:-left-16 bg-white rounded-2xl px-5 py-3.5 shadow-2xl border border-slate-100 text-left min-w-[190px] z-30">
-              <h4 className="text-xs sm:text-sm font-bold text-slate-900">UI/UX Design</h4>
-              <p className="text-[10px] sm:text-xs font-semibold text-slate-500 mt-0.5">200 Courses • 1000+ Students</p>
-            </div>
+            {/* Main Headline */}
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-[64px] font-extrabold tracking-tight text-slate-900 leading-[1.08]">
+              Master In-Demand Skills. <br />
+              <span className="bg-gradient-to-r from-[#0050FF] via-[#0042D9] to-indigo-600 bg-clip-text text-transparent">
+                Build Real-World
+              </span>{' '}
+              Projects.
+            </h1>
 
-            {/* Floating Glass Card 2: Top-Right Learning Progress */}
-            <div className="absolute top-10 -right-8 sm:top-16 sm:-right-16 bg-white rounded-2xl p-4 shadow-2xl border border-slate-100 w-48 text-left z-30">
-              <div className="text-[11px] font-semibold text-slate-500 mb-1">Learning Progress</div>
-              <div className="text-2xl font-black text-slate-900 mb-2">55%</div>
-              <div className="h-2 w-full rounded-full bg-slate-100 overflow-hidden">
-                <div className="h-full bg-[#C6FF00] rounded-full w-[55%]" />
-              </div>
-            </div>
+            {/* Subtitle */}
+            <p className="mt-5 text-base sm:text-lg text-slate-600 max-w-xl font-normal leading-relaxed">
+              Accelerate your career with interactive courses taught by world-class creators and
+              engineers. Get personalized roadmaps, portfolio reviews, and verifiable certificates.
+            </p>
 
-            {/* Floating Glass Card 3: Bottom-Left Happy Students */}
-            <div className="absolute bottom-10 -left-6 sm:bottom-16 sm:-left-12 bg-white rounded-2xl p-4 shadow-2xl border border-slate-100 text-left min-w-[210px] z-30">
-              <div className="text-xs font-bold text-slate-900">Happy Students</div>
-              <div className="flex items-center gap-1 text-[11px] font-bold text-slate-700 mt-0.5">
-                <span>4.5</span>
-                <span className="text-slate-400 font-normal">(240)</span>
-                <span className="text-amber-400">★</span>
-              </div>
-              <div className="flex items-center mt-2.5">
-                <div className="flex -space-x-2">
-                  <div className="h-6 w-6 rounded-full bg-slate-800 border-2 border-white flex items-center justify-center text-[8px] font-bold text-white">A</div>
-                  <div className="h-6 w-6 rounded-full bg-blue-600 border-2 border-white flex items-center justify-center text-[8px] font-bold text-white">B</div>
-                  <div className="h-6 w-6 rounded-full bg-pink-500 border-2 border-white flex items-center justify-center text-[8px] font-bold text-white">C</div>
-                  <div className="h-6 w-6 rounded-full bg-emerald-600 border-2 border-white flex items-center justify-center text-[8px] font-bold text-white">D</div>
-                  <div className="h-6 w-6 rounded-full bg-amber-600 border-2 border-white flex items-center justify-center text-[8px] font-bold text-white">E</div>
+            {/* Interactive Search Bar */}
+            <div className="mt-8 w-full max-w-xl">
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  const el = document.getElementById('courses');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="flex items-center rounded-2xl bg-white p-2 shadow-lg shadow-slate-200/50 border border-slate-200 focus-within:border-[#0050FF] focus-within:ring-4 focus-within:ring-[#0050FF]/10 transition-all"
+              >
+                <div className="pl-3 text-slate-400">
+                  <Search className="h-5 w-5" />
                 </div>
-                <span className="ml-2 text-[10px] font-extrabold text-slate-900 bg-[#C6FF00] px-2 py-0.5 rounded-full">
-                  2K+
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="What skill do you want to master today? (e.g. Figma, Python)"
+                  className="w-full bg-transparent px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none font-medium"
+                />
+                <button
+                  type="submit"
+                  className="rounded-xl bg-[#0050FF] hover:bg-[#0042D9] px-6 py-3 text-sm font-bold text-white transition-all shadow-md shadow-blue-500/25 active:scale-95 shrink-0"
+                >
+                  Explore
+                </button>
+              </form>
+
+              {/* Popular Search Chips */}
+              <div className="mt-3.5 flex flex-wrap items-center gap-2 text-xs text-slate-500">
+                <span className="font-semibold text-slate-700 flex items-center gap-1">
+                  <TrendingUp className="h-3.5 w-3.5 text-[#0050FF]" /> Popular:
                 </span>
+                {popularTags.map((tag) => (
+                  <button
+                    key={tag}
+                    type="button"
+                    onClick={() => {
+                      setSearchQuery(tag);
+                      const el = document.getElementById('courses');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                    className="rounded-lg bg-slate-100 hover:bg-slate-200/80 px-2.5 py-1 text-slate-700 font-medium transition-colors"
+                  >
+                    {tag}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Social Proof & Trust Metric */}
+            <div className="mt-10 pt-8 border-t border-slate-200/80 w-full flex flex-wrap items-center gap-6 sm:gap-10">
+              <div className="flex items-center gap-3">
+                <div className="flex -space-x-2">
+                  <div className="h-9 w-9 rounded-full border-2 border-white bg-slate-800 flex items-center justify-center text-xs font-bold text-white shadow-sm">
+                    A
+                  </div>
+                  <div className="h-9 w-9 rounded-full border-2 border-white bg-blue-600 flex items-center justify-center text-xs font-bold text-white shadow-sm">
+                    B
+                  </div>
+                  <div className="h-9 w-9 rounded-full border-2 border-white bg-purple-600 flex items-center justify-center text-xs font-bold text-white shadow-sm">
+                    C
+                  </div>
+                  <div className="h-9 w-9 rounded-full border-2 border-white bg-emerald-600 flex items-center justify-center text-xs font-bold text-white shadow-sm">
+                    D
+                  </div>
+                </div>
+                <div>
+                  <div className="text-xs font-bold text-slate-900">120,000+ Students</div>
+                  <div className="text-[11px] text-slate-500">Enrolled across 85 countries</div>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <div className="flex text-amber-400">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="h-4 w-4 fill-amber-400" />
+                  ))}
+                </div>
+                <div className="text-xs">
+                  <span className="font-extrabold text-slate-900">4.9 / 5.0</span>
+                  <span className="text-slate-400 ml-1">(18,500+ reviews)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: Modern Interactive Course Studio Preview */}
+          <div className="lg:col-span-5 relative">
+            {/* Background Accent Card Layer */}
+            <div className="absolute inset-0 -rotate-2 rounded-3xl bg-gradient-to-tr from-[#0050FF] to-blue-400 opacity-20 blur-xl pointer-events-none" />
+
+            {/* Main Interactive Showcase Card */}
+            <div className="relative rounded-3xl bg-white p-5 sm:p-6 shadow-2xl border border-slate-200/90 transition-all duration-300 hover:shadow-[0_25px_60px_rgba(0,0,0,0.12)]">
+              {/* Card Header Bar */}
+              <div className="flex items-center justify-between pb-4 border-b border-slate-100">
+                <div className="flex items-center gap-2">
+                  <div className="flex gap-1.5">
+                    <span className="h-3 w-3 rounded-full bg-rose-400" />
+                    <span className="h-3 w-3 rounded-full bg-amber-400" />
+                    <span className="h-3 w-3 rounded-full bg-emerald-400" />
+                  </div>
+                  <span className="text-xs font-bold text-slate-600 ml-2">Course Studio Live</span>
+                </div>
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 text-emerald-700 px-2.5 py-0.5 text-[10px] font-extrabold">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  Interactive Lab
+                </span>
+              </div>
+
+              {/* Video/Preview Stage */}
+              <div className="relative mt-4 h-48 sm:h-56 w-full rounded-2xl overflow-hidden bg-slate-900 group">
+                <Image
+                  src="/images/courses/course-figma.jpg"
+                  alt="Modern Figma Architecture"
+                  fill
+                  className="object-cover opacity-85 transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-black/30" />
+
+                {/* Center Play Button */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <button
+                    type="button"
+                    aria-label="Play course preview"
+                    className="flex h-14 w-14 items-center justify-center rounded-full bg-white/90 text-[#0050FF] shadow-xl backdrop-blur-md transition-all hover:scale-110 active:scale-95"
+                  >
+                    <Play className="h-6 w-6 fill-[#0050FF] ml-1" />
+                  </button>
+                </div>
+
+                {/* Live Progress Bar on Image */}
+                <div className="absolute bottom-3 left-3 right-3 bg-black/60 backdrop-blur-md rounded-xl p-2.5 text-white">
+                  <div className="flex items-center justify-between text-[11px] font-semibold mb-1">
+                    <span>Lesson 4: Building Design Tokens</span>
+                    <span className="text-[#C6FF00]">12:40 / 18:25</span>
+                  </div>
+                  <div className="h-1.5 w-full bg-white/20 rounded-full overflow-hidden">
+                    <div className="h-full bg-[#C6FF00] rounded-full w-[68%]" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Course Info Bar */}
+              <div className="mt-4">
+                <div className="flex items-start justify-between">
+                  <div>
+                    <h3 className="text-base font-bold text-slate-900">
+                      Learn Figma & UI/UX from Scratch
+                    </h3>
+                    <p className="text-xs text-slate-500 mt-0.5">
+                      by purepeert studio • Masterclass
+                    </p>
+                  </div>
+                  <span className="text-lg font-black text-[#0050FF]">$25</span>
+                </div>
+
+                {/* Interactive Feature Pills */}
+                <div className="mt-4 grid grid-cols-2 gap-2 text-xs">
+                  <div className="flex items-center gap-2 rounded-xl bg-slate-50 p-2.5 border border-slate-100">
+                    <CheckCircle2 className="h-4 w-4 text-emerald-500 shrink-0" />
+                    <span className="font-semibold text-slate-700">17 Hands-on Labs</span>
+                  </div>
+                  <div className="flex items-center gap-2 rounded-xl bg-slate-50 p-2.5 border border-slate-100">
+                    <ShieldCheck className="h-4 w-4 text-[#0050FF] shrink-0" />
+                    <span className="font-semibold text-slate-700">Verified Certificate</span>
+                  </div>
+                </div>
+
+                {/* Quick Action Button */}
+                <Link
+                  href="/signup"
+                  className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-[#0050FF] hover:bg-[#0042D9] py-3 text-sm font-bold text-white transition-colors shadow-md shadow-blue-500/20"
+                >
+                  <span>Start Learning Now</span>
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+
+              {/* Floating Badge 1: Top-Right Achievement */}
+              <div className="absolute -top-5 -right-4 bg-white rounded-2xl px-4 py-2.5 shadow-xl border border-slate-100 flex items-center gap-2.5 z-20 animate-bounce duration-1000">
+                <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#C6FF00] text-slate-900 font-bold">
+                  🏆
+                </div>
+                <div>
+                  <div className="text-[11px] font-bold text-slate-900">Top Rated Course</div>
+                  <div className="text-[9px] text-slate-500">4.9 Star Average</div>
+                </div>
+              </div>
+
+              {/* Floating Badge 2: Bottom-Left Mentor Callout */}
+              <div className="absolute -bottom-6 -left-6 bg-white/95 backdrop-blur-md rounded-2xl px-4 py-3 shadow-xl border border-slate-100 hidden sm:flex items-center gap-3 z-20">
+                <div className="relative h-10 w-10 rounded-full overflow-hidden border border-slate-200">
+                  <Image
+                    src="/images/testimonials/avatar-alex.png"
+                    alt="Mentor"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div>
+                  <div className="text-xs font-bold text-slate-900 flex items-center gap-1">
+                    <span>1-on-1 Mentorship</span>
+                    <span className="h-2 w-2 rounded-full bg-emerald-500" />
+                  </div>
+                  <div className="text-[10px] text-slate-500">Weekly Office Hours Available</div>
+                </div>
               </div>
             </div>
           </div>

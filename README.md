@@ -1,4 +1,4 @@
-# ByteSpace New - Online Course Marketplace
+# SkillSphere - Online Course Marketplace & Creator Ecosystem
 
 A modern, scalable online course marketplace built with Next.js (App Router), TypeScript, and Tailwind CSS.
 
